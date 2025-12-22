@@ -1,0 +1,15 @@
+package main.Controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TestController {
+
+	@GetMapping("/test")
+	public String getMsg() {
+		int a = 10 / 0;
+		return "Message from Spring Boot";
+	}
+	
+}
