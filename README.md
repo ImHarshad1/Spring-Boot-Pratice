@@ -1,4 +1,5 @@
 🌟 Spring Boot Practice Repository
+
 Welcome to my Spring Boot Practice Hub — a curated collection of projects where I explore, implement, and refine backend development concepts. This repository is my learning playground and portfolio showcase, blending clean code, modern Spring Boot features, and interview‑ready patterns.
 
 📂 Project Modules
