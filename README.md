@@ -64,8 +64,8 @@ This repository is more than practice — it’s a portfolio of backend mastery.
 - [x] Pagination & Sorting  
 - [x] Filtering with JPA  
 - [x] Global Exception Handling  
-- [ ] Lombok Integration  
-- [ ] Spring Security (JWT)  
-- [ ] Validations  
+- [x] Lombok Integration  
+- [x] Spring Security (JWT)  
+- [x] Validations  
 - [ ] Swagger/OpenAPI Docs  
 - [ ] Unit & Integration Tests  
