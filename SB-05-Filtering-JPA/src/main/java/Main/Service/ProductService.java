@@ -53,7 +53,7 @@ public class ProductService {
 	}
 
 	public String deleteById(Integer id) {
-		Product pd = dao.getById(id);
+		Product pd = dao.findById(id);
 		dao.delete(pd);
 		return "Deleted";
 	}
