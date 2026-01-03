@@ -21,6 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	List<Product> findByPriceGreaterThanEqual(Double price);
 	List<Product> findByPriceLessThan(Double price);
 	List<Product> findByPriceIsLessThanEqual(Double price);
+	List<Product> PriceRange(Double fPrice, Double tPrice);
 	
 // Color filters
 	List<Product> findByColorIgnoreCase(String color);
@@ -43,5 +44,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	// Utility
 	boolean existsByName(String name);
 	long countByColor(String color);
+	
+	
 
 }
