@@ -24,36 +24,40 @@ import main.repository.CustomerRepository;
 public class CustomerController {
 
 	@Autowired
-	private CustomerRepository customerRepo;
+	private CustomerRepository custRepo;
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private AuthenticationManager authManager;
 	
 	@Autowired
-	private AuthenticationManager authenticationManager;
+	private PasswordEncoder passEncode;
 	
 	@PostMapping("/register")
-	public ResponseEntity<String> registerdMethod(@RequestBody RegisterDTO registerDTO){
-		Optional<Customer> opt = customerRepo.findByEmail(registerDTO.getEmail());
+	public ResponseEntity<String> registerMethod(@RequestBody RegisterDTO rd){
+		Optional<Customer> opt = custRepo.findByEmail(rd.getEmail());
 		if(opt.isPresent()) {
-			return ResponseEntity.status(HttpStatus.OK).body("Already Registered");
+			return ResponseEntity.status(HttpStatus.OK).body("Already Registered !!!!!!");
 		}
+		
 		Customer c = new Customer();
-		c.setName(registerDTO.getName());
-		c.setEmail(registerDTO.getEmail());
-		c.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-
-		customerRepo.save(c);
+		c.setName(rd.getName());
+		c.setEmail(rd.getEmail());
+		c.setPassword(passEncode.encode(rd.getPassword()));
+		
+		custRepo.save(c);
 		return ResponseEntity.status(HttpStatus.CREATED).body("Registered Successfully");
+		
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> LoginMethod(@RequestBody LoginDTO loginDTO){
-		try {
-			UsernamePasswordAuthenticationToken t = new UsernamePasswordAuthenticationToken(loginDTO.getEmail(),loginDTO.getPassword());
-		
-			Authentication auth = authenticationManager.authenticate(t);
-			if(auth.isAuthenticated()) {
+	public ResponseEntity<String> loginMethod(@RequestBody LoginDTO ld){
+		try {		//this holds the user’s credentials and it’s unauthenticated — just raw credentials.
+			UsernamePasswordAuthenticationToken holds = new UsernamePasswordAuthenticationToken(ld.getEmail(), ld.getPassword());
+			
+			Authentication auth = authManager.authenticate(holds);		
+			//The AuthenticationManager takes token and passes it to the configured AuthenticationProvider
+
+			if(auth.isAuthenticated()) {	//After authentication, this isAuthenticated(): Confirms login success.
 				return ResponseEntity.status(HttpStatus.OK).body("Logged In Successful");
 			}
 		} catch (Exception e) {
@@ -61,9 +65,9 @@ public class CustomerController {
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Credentials");
 	}
- 
+
 	@GetMapping("/greet")
-	public String getMsg() {
-		return "Hey Good Morning!!!!!!!!!!!!!";
+	public String greet() {
+		return "Hiiii!!!!";
 	}
 }
