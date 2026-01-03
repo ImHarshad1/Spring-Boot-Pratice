@@ -56,19 +56,13 @@ public class ProductService {
 
 	public Page<Product> fetchByPage(Integer pageNumber) {
 		// logic to fetch records based on pageNumber 
-		//will also get info like totalElements, totalPages
+		//will also get info like Total pages
 		Pageable pageable = PageRequest.of(pageNumber -1, 10);
 		
 		Page<Product> all =productRepository.findAll(pageable);
 		List<Product> pd = all.toList(); 
 		return all;
 	}
-	 //if we want List and not other details use this
-//	public List<Product> fetchByPage(Integer pageNumber) {
-//	    Pageable pageable = PageRequest.of(pageNumber - 1, 10);
-//	    Page<Product> page = productRepository.findAll(pageable);
-//	    return page.toList();   // ✅ Only list returned
-//	} 
 
 	// Sorting order -> asc,desc
 	public List<Product> sortProducts(String param, String order) {
