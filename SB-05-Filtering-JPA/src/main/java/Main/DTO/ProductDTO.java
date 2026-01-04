@@ -1,7 +1,7 @@
 package Main.DTO;
 
 public class ProductDTO {
-	
+
 	private String name;
 	private Double price;
 	private String color;
