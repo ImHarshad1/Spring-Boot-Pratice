@@ -6,8 +6,8 @@ spring:
       client:
         registration:
           google:
-            client-id: '{google-client-id}'
-            client-secret: '{google-client-secret}'
+            client-id: 50584024642-r9ckb17k7skgpsl96gqrcgdfebjragdc.apps.googleusercontent.com
+            client-secret: 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
           github:
-            client-id: '{github-client-id}'
-            client-secret: '{github-client-secret}'
+            client-id: Ov23linPKkXuOG3VNzWN
+            client-secret: 0a826a60d71367eff339bee76c78ec4daa5abfbf
