@@ -10,4 +10,9 @@ public class UserController {
 	public String welcome() {
 		return "Welcome to User App";
 	}
+	
+	@GetMapping("/login")
+	public String Login() {
+		return "Succesfully Logged in";
+	}
 }
